@@ -1,0 +1,36 @@
+name: "systemd CI workflow"
+
+
+on:
+  push:
+    branches: [ test ]
+
+
+jobs:
+
+  ubuntu-latest-systemd-job:
+    name: "systemd docker scientificlinux ubuntu latest"
+    runs-on: ubuntu-latest
+    env:
+      distribution: "scientificlinux" # https://hub.docker.com/_/sl
+      version: "latest"
+      name: "scientificlinux/base"
+      dockerfilename: "Dockerfile.scientific"
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: |
+        hostnamectl status
+        lsb_release -a
+        lsb_release -d
+        cat /etc/lsb-release
+        cat /etc/issue
+        cat /etc/os-release
+        sudo apt-get install -y neofetch && neofetch   
+        systemd-analyze
+    - name: "docker build scientificlinux systemd base"
+      run: |
+        docker build --rm -t local/mycontainer --file dockerfiles/${dockerfilename} 
+        # build and run this example (with apache)
+        docker run -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/mycontainer
+    
