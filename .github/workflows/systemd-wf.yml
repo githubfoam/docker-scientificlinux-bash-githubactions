@@ -30,7 +30,8 @@ jobs:
         systemd-analyze
     - name: "docker build scientificlinux systemd base"
       run: |
-        docker build --rm -t local/mycontainer --file dockerfiles/${dockerfilename} 
+        # https://hub.docker.com/_/sl
+        docker build --rm -t local/mycontainer . --file dockerfiles/${dockerfilename} 
         # build and run this example (with apache)
         docker run -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/mycontainer
     
