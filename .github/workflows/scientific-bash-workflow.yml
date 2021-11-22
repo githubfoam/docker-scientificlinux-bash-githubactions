@@ -39,5 +39,5 @@ jobs:
         docker image inspect ${name}/${version}
     - name: "docker build scientificlinux base" 
       run: |
-        docker run --name scifi scientificlinux/sl:7 cat /etc/redhat-release
-        docker run --name scifi scientificlinux/sl:6 cat /etc/redhat-release
+        docker run --name scifi/7 scientificlinux/sl:7 cat /etc/redhat-release
+        docker run --name scifi/6 scientificlinux/sl:6 cat /etc/redhat-release
