@@ -41,5 +41,6 @@ jobs:
       run: |
         # docker pull scientificlinux/sl
         # the input device is not a TTY
-        docker run -it scientificlinux/sl:6 cat /etc/redhat-release
-        docker run -it scientificlinux/sl:7 cat /etc/redhat-release
+        docker run --name scifi scientificlinux/sl:7 cat /etc/redhat-release
+        # docker run -it scientificlinux/sl:6 cat /etc/redhat-release
+        # docker run -it scientificlinux/sl:7 cat /etc/redhat-release

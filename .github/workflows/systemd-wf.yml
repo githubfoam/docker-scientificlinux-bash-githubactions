@@ -15,7 +15,7 @@ jobs:
       distribution: "scientificlinux" # https://hub.docker.com/_/sl
       version: "latest"
       name: "scientificlinux/base"
-      dockerfilename: "Dockerfile.scientific"
+      dockerfilename: "Dockerfile.sl7.systemd"
     steps:
     - uses: actions/checkout@v2
     - name: "os fingerprinting"
