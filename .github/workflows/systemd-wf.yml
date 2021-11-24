@@ -40,4 +40,5 @@ jobs:
         docker run -d --name scifi-systemd -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 ${name}:${version} 
         docker image ls
         docker container ls
+        docker exec scifi-systemd cat /etc/redhat-release
     
