@@ -36,7 +36,8 @@ jobs:
         docker build --rm -t ${name}:${version} . --file ${dockerdir}/${dockerfile}
         # the input device is not a TTY
         # docker run -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/mycontainer
-        docker run -d -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/mycontainer
+        # docker run -d -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/mycontainer
+        docker run -d --name scifi-systemd -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 ${name}:${version} 
         docker image ls
         docker container ls
     
