@@ -34,10 +34,11 @@ jobs:
         # all subsequent Dockerfile commands generate new images and the cache is not used
         sudo docker build --no-cache --rm  -t ${name}/${version}  . --file dockerfiles/${dockerfilename} 
         docker image ls
+        docker container ls
         docker image history ${name}/${version}
         docker system df -v               
         docker image inspect ${name}/${version}
-    - name: "docker build scientificlinux base" 
+    - name: "run scientificlinux" 
       run: |
-        docker run --name scifi/7 scientificlinux/sl:7 cat /etc/redhat-release
-        docker run --name scifi/6 scientificlinux/sl:6 cat /etc/redhat-release
+        docker run --name scifi-7 scientificlinux/sl:7 cat /etc/redhat-release
+        docker run --name scifi-6 scientificlinux/sl:6 cat /etc/redhat-release
