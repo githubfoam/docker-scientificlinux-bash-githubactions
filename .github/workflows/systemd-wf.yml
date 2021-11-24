@@ -32,7 +32,7 @@ jobs:
     - name: "docker build scientificlinux systemd base"
       run: |
         # https://hub.docker.com/_/sl
-        # docker build --rm -t local/mycontainer . --file dockerfiles/${dockerfilename} 
+        # docker build --rm -t local/mycontainer . --file dockerfiles/${dockerfile} 
         docker build --rm -t ${name}:${version} . --file ${dockerdir}/${dockerfile}
         # the input device is not a TTY
         # docker run -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/mycontainer
